@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import FitnessClass from '../components/FitnessClass'
+import { listPrograms } from '../actions/programActions'
 
 const HomeScreen = () => {
-  const [programs, setPrograms] = useState([])
+  const dispatch = useDispatch()
+
+  const programList = useSelector(state => state.programList)
+  const { loading, error, programs } = programList
 
   useEffect(() => {
-    const fetchPrograms = async () => {
-      const { data } = await axios.get('/api/programs')
+    dispatch(listPrograms())
+  }, [dispatch])
 
-      setPrograms(data)
-    }
-    fetchPrograms()
-  }, [])
   return (
     <>
       <h1>Programs</h1>
-      <Row>
-        {programs.map(program => (
-          <Col sm={12} md={6} lg={4} xl={3}>
-            <FitnessClass program={program} />
-          </Col>
-        ))}
-      </Row>
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <Row>
+          {programs.map(program => (
+            <Col key={program._id} sm={12} md={6} lg={4} xl={3}>
+              <FitnessClass program={program} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </>
   )
 }
