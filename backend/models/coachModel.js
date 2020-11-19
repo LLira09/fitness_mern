@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import bcrypt from 'bcryptjs'
 
 const coachReviewSchema = mongoose.Schema(
   {
@@ -60,6 +61,10 @@ const coachSchema = mongoose.Schema(
     timestamps: true
   }
 )
+
+coachSchema.methods.matchPassword = async function(enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password)
+}
 
 const Coach = mongoose.model('Coach', coachSchema)
 
