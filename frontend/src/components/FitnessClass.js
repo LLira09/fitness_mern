@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 import Rating from './Rating'
 
-const FitnessClass = ({ gClass }) => {
+const FitnessClass = ({ program }) => {
   return (
     <Card className='my-3 p-3 rounded'>
-      <Link to={`/fitnessclass/${gClass._id}`}>
-        <Card.Img src={gClass.image} variant='top' />
+      <Link to={`/fitnessclass/${program._id}`}>
+        <Card.Img src={program.image} variant='top' />
       </Link>
       <Card.Body>
-        <Card.Title as='div'>{gClass.name}</Card.Title>
+        <Card.Title as='div'>{program.name}</Card.Title>
         <Card.Text as='div'>
-          <Rating value={gClass.rating} text={`${gClass.numReviews} reviews`} />
+          <Rating
+            value={program.rating}
+            text={`${program.numReviews} reviews`}
+          />
         </Card.Text>
-        <Link to={`/fitnessclass/${gClass._id}`}>
+        <Link to={`/fitnessclass/${program._id}`}>
           <Button className='mt-2'>More Info</Button>
         </Link>
       </Card.Body>

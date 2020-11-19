@@ -1,6 +1,6 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap'
+import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 
 const Header = () => {
   return (
@@ -26,7 +26,7 @@ const Header = () => {
                 </Nav.Link>
               </LinkContainer>
 
-              {/* <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
+              <NavDropdown title='Programs' id='basic-nav-dropdown'>
                 <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
                 <NavDropdown.Item href='#action/3.2'>
                   Another action
@@ -38,7 +38,7 @@ const Header = () => {
                 <NavDropdown.Item href='#action/3.4'>
                   Separated link
                 </NavDropdown.Item>
-              </NavDropdown> */}
+              </NavDropdown>
             </Nav>
             {/* <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
