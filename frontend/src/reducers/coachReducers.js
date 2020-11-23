@@ -8,10 +8,10 @@ import {
   COACH_DETAILS_FAIL,
   COACH_UPDATE_PROFILE_REQUEST,
   COACH_UPDATE_PROFILE_SUCCESS,
-  COACH_UPDATE_PROFILE_FAIL
-  // COACH_LIST_REQUEST,
-  // COACH_LIST_SUCCESS,
-  // COACH_LIST_FAIL,
+  COACH_UPDATE_PROFILE_FAIL,
+  COACH_LIST_REQUEST,
+  COACH_LIST_SUCCESS,
+  COACH_LIST_FAIL
   // LIST_COACH_DETAILS_REQUEST,
   // LIST_COACH_DETAILS_SUCCESS,
   // LIST_COACH_DETAILS_FAIL
@@ -59,18 +59,18 @@ export const coachUpdateProfileReducer = (state = {}, action) => {
   }
 }
 
-// export const coachListReducer = (state = { coaches: [] }, action) => {
-//   switch (action.type) {
-//     case COACH_LIST_REQUEST:
-//       return { loading: true, coaches: [] }
-//     case COACH_LIST_SUCCESS:
-//       return { loading: false, coaches: action.payload }
-//     case COACH_LIST_FAIL:
-//       return { loading: false, error: action.payload }
-//     default:
-//       return state
-//   }
-// }
+export const coachListReducer = (state = { coaches: [] }, action) => {
+  switch (action.type) {
+    case COACH_LIST_REQUEST:
+      return { loading: true, coaches: [] }
+    case COACH_LIST_SUCCESS:
+      return { loading: false, coaches: action.payload }
+    case COACH_LIST_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
 
 // export const listCoachDetailsReducer = (
 //   state = { coach: { reviews: [] } },

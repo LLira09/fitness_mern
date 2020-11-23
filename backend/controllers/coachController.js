@@ -117,13 +117,13 @@ const updateCoachProfile = asyncHandler(async (req, res) => {
   }
 })
 
-// // @desc    Fetch all coaches
-// // @route   GET /api/coaches
-// // @access  Public
-// const getCoaches = asyncHandler(async (req, res) => {
-//   const coaches = await Coach.find({}).select('-password')
-//   res.json(coaches)
-// })
+// @desc    Fetch all coaches
+// @route   GET /api/coaches
+// @access  Public
+const getCoaches = asyncHandler(async (req, res) => {
+  const coaches = await Coach.find({}).select('-password')
+  res.json(coaches)
+})
 
 // // @desc    Fetch single coach
 // // @route   GET /api/coaches/:id
@@ -143,7 +143,7 @@ export {
   authCoach,
   getCoachProfile,
   registerCoach,
-  updateCoachProfile
-  // getCoaches,
+  updateCoachProfile,
+  getCoaches
   // getCoachById
 }
