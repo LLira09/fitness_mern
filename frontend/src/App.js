@@ -11,7 +11,7 @@ import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import CoachProfileScreen from './screens/CoachProfileScreen'
 // import CoachScreen from './screens/CoachScreen'
-// import CoachesScreen from './screens/CoachesScreen'
+import CoachesScreen from './screens/CoachesScreen'
 
 const App = () => {
   return (
@@ -20,6 +20,7 @@ const App = () => {
       <main className='py-3'>
         <Container>
           <Route path='/login' component={LoginScreen} />
+          <Route path='/coaches' component={CoachesScreen} exact />
 
           {/* <Route path='/coaches/:id' component={CoachScreen} /> */}
           <Route path='/coaches/login' component={CoachLoginScreen} />

@@ -4,14 +4,14 @@ import {
   authCoach,
   registerCoach,
   getCoachProfile,
-  updateCoachProfile
-  // getCoaches,
+  updateCoachProfile,
+  getCoaches
   // getCoachById
 } from '../controllers/coachController.js'
 import { protectCoach } from '../middleware/authMiddleware.js'
 
 router.route('/').post(registerCoach)
-// .get(getCoaches)
+router.route('/').get(getCoaches)
 // router.route('/:id').get(getCoachById)
 router.post('/login', authCoach)
 router
