@@ -15,6 +15,8 @@ import {
   coachLoginReducer,
   coachDetailsReducer,
   coachUpdateProfileReducer
+  // coachListReducer,
+  // listCoachDetailsReducer
 } from './reducers/coachReducers'
 
 const reducer = combineReducers({
@@ -24,6 +26,8 @@ const reducer = combineReducers({
   coachLogin: coachLoginReducer,
   coachDetails: coachDetailsReducer,
   coachUpdateProfile: coachUpdateProfileReducer,
+  // coachList: coachListReducer,
+  // listCoachDetails: listCoachDetailsReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer

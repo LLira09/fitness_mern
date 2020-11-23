@@ -66,7 +66,7 @@ const registerCoach = asyncHandler(async (req, res) => {
 
 // @desc    Get coach profile
 // @route   GET /api/coach/profile
-// @access  Public
+// @access  Private
 const getCoachProfile = asyncHandler(async (req, res) => {
   const coach = await Coach.findById(req.coach._id)
 
@@ -101,15 +101,15 @@ const updateCoachProfile = asyncHandler(async (req, res) => {
     if (req.body.password) {
       coach.password = req.body.password
     }
-    const updateCoach = await coach.save()
+    const updatedCoach = await coach.save()
     res.json({
-      _id: updateCoach._id,
-      name: updateCoach.name,
-      email: updateCoach.email,
-      image: updateCoach.image,
-      price: updateCoach.price,
-      isAdmin: updateCoach.isAdmin,
-      token: generateToken(updateCoach._id)
+      _id: updatedCoach._id,
+      name: updatedCoach.name,
+      email: updatedCoach.email,
+      image: updatedCoach.image,
+      price: updatedCoach.price,
+      isAdmin: updatedCoach.isAdmin,
+      token: generateToken(updatedCoach._id)
     })
   } else {
     res.status(404)
@@ -117,33 +117,33 @@ const updateCoachProfile = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Fetch all coaches
-// @route   GET /api/coaches
-// @access  Public
-const getCoaches = asyncHandler(async (req, res) => {
-  const coaches = await Coach.find({})
-  res.json(coaches)
-})
+// // @desc    Fetch all coaches
+// // @route   GET /api/coaches
+// // @access  Public
+// const getCoaches = asyncHandler(async (req, res) => {
+//   const coaches = await Coach.find({}).select('-password')
+//   res.json(coaches)
+// })
 
-// @desc    Fetch single coach
-// @route   GET /api/coaches/:id
-// @access  Public
-const getCoachById = asyncHandler(async (req, res) => {
-  const coach = await Coach.findById(req.params.id)
+// // @desc    Fetch single coach
+// // @route   GET /api/coaches/:id
+// // @access  Public
+// const getCoachById = asyncHandler(async (req, res) => {
+//   const coach = await Coach.findById(req.params.id).select('-password')
 
-  if (coach) {
-    res.json(coach)
-  } else {
-    res.status(404)
-    throw new Error('Coach not found')
-  }
-})
+//   if (coach) {
+//     res.json(coach)
+//   } else {
+//     res.status(404)
+//     throw new Error('Coach not found')
+//   }
+// })
 
 export {
   authCoach,
   getCoachProfile,
   registerCoach,
-  updateCoachProfile,
-  getCoaches,
-  getCoachById
+  updateCoachProfile
+  // getCoaches,
+  // getCoachById
 }

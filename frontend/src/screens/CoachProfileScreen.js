@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -64,7 +63,7 @@ const CoachProfileScreen = ({ location, history }) => {
   return (
     <>
       <Row>
-        <h2>Welcome Back {coach.name}</h2>
+        <h2>Welcome Back</h2>
       </Row>
       <Row>
         <Col md={3}>
@@ -95,7 +94,7 @@ const CoachProfileScreen = ({ location, history }) => {
             <Form.Group controlId='image'>
               <Form.Label>Image</Form.Label>
               <Form.Control
-                type='image'
+                type='text'
                 placeholder='Enter Image Link'
                 value={image}
                 onChange={e => setImage(e.target.value)}
