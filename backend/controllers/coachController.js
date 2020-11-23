@@ -76,6 +76,7 @@ const getCoachProfile = asyncHandler(async (req, res) => {
       name: coach.name,
       email: coach.email,
       image: coach.image,
+      bio: coach.bio,
       price: coach.price,
       isAdmin: coach.isAdmin
     })
@@ -85,4 +86,64 @@ const getCoachProfile = asyncHandler(async (req, res) => {
   }
 })
 
-export { authCoach, getCoachProfile, registerCoach }
+// @desc    Update coach profile
+// @route   PUT /api/coaches/profile
+// @access  Private
+const updateCoachProfile = asyncHandler(async (req, res) => {
+  const coach = await Coach.findById(req.coach._id)
+
+  if (coach) {
+    coach.name = req.body.name || coach.name
+    coach.email = req.body.email || coach.email
+    coach.image = req.body.image || coach.image
+    coach.bio = req.body.bio || coach.bio
+    coach.price = req.body.price || coach.price
+    if (req.body.password) {
+      coach.password = req.body.password
+    }
+    const updateCoach = await coach.save()
+    res.json({
+      _id: updateCoach._id,
+      name: updateCoach.name,
+      email: updateCoach.email,
+      image: updateCoach.image,
+      price: updateCoach.price,
+      isAdmin: updateCoach.isAdmin,
+      token: generateToken(updateCoach._id)
+    })
+  } else {
+    res.status(404)
+    throw new Error('Coach not found')
+  }
+})
+
+// @desc    Fetch all coaches
+// @route   GET /api/coaches
+// @access  Public
+const getCoaches = asyncHandler(async (req, res) => {
+  const coaches = await Coach.find({})
+  res.json(coaches)
+})
+
+// @desc    Fetch single coach
+// @route   GET /api/coaches/:id
+// @access  Public
+const getCoachById = asyncHandler(async (req, res) => {
+  const coach = await Coach.findById(req.params.id)
+
+  if (coach) {
+    res.json(coach)
+  } else {
+    res.status(404)
+    throw new Error('Coach not found')
+  }
+})
+
+export {
+  authCoach,
+  getCoachProfile,
+  registerCoach,
+  updateCoachProfile,
+  getCoaches,
+  getCoachById
+}

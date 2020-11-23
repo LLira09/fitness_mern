@@ -3,7 +3,13 @@ import {
   COACH_LOGIN_REQUEST,
   COACH_LOGIN_SUCCESS,
   COACH_LOGIN_FAIL,
-  COACH_LOGOUT
+  COACH_LOGOUT,
+  COACH_DETAILS_REQUEST,
+  COACH_DETAILS_SUCCESS,
+  COACH_DETAILS_FAIL,
+  COACH_UPDATE_PROFILE_REQUEST,
+  COACH_UPDATE_PROFILE_SUCCESS,
+  COACH_UPDATE_PROFILE_FAIL
 } from '../constants/coachConstants'
 
 export const login = (email, password) => async dispatch => {
@@ -42,4 +48,70 @@ export const login = (email, password) => async dispatch => {
 export const coachLogout = () => dispatch => {
   localStorage.removeItem('coachInfo')
   dispatch({ type: COACH_LOGOUT })
+}
+
+export const getCoachDetails = id => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: COACH_DETAILS_REQUEST
+    })
+
+    const {
+      coachLogin: { coachInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${coachInfo.token}`
+      }
+    }
+    const { data } = await axios.get(`/api/coaches/${id}`, config)
+
+    dispatch({
+      type: COACH_DETAILS_SUCCESS,
+      payload: data
+    })
+  } catch (error) {
+    dispatch({
+      type: COACH_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    })
+  }
+}
+
+export const updateCoachProfile = coach => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: COACH_UPDATE_PROFILE_REQUEST
+    })
+
+    const {
+      coachLogin: { coachInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${coachInfo.token}`
+      }
+    }
+    const { data } = await axios.put(`/api/coaches/profile`, coach, config)
+
+    dispatch({
+      type: COACH_UPDATE_PROFILE_SUCCESS,
+      payload: data
+    })
+  } catch (error) {
+    dispatch({
+      type: COACH_UPDATE_PROFILE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    })
+  }
 }

@@ -70,7 +70,7 @@ const Header = () => {
                 </NavDropdown>
               ) : coachInfo ? (
                 <NavDropdown title={coachInfo.name} id='username'>
-                  <LinkContainer to='/profile'>
+                  <LinkContainer to='/coaches/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={coachLogoutHandler}>

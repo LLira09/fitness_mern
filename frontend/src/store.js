@@ -11,13 +11,19 @@ import {
   userDetailsReducer,
   userUpdateProfileReducer
 } from './reducers/userReducers'
-import { coachLoginReducer } from './reducers/coachReducers'
+import {
+  coachLoginReducer,
+  coachDetailsReducer,
+  coachUpdateProfileReducer
+} from './reducers/coachReducers'
 
 const reducer = combineReducers({
   programList: programListReducer,
   programDetails: programDetailsReducer,
   userLogin: userLoginReducer,
   coachLogin: coachLoginReducer,
+  coachDetails: coachDetailsReducer,
+  coachUpdateProfile: coachUpdateProfileReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer
