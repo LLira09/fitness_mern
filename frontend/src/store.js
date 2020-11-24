@@ -5,6 +5,7 @@ import {
   programListReducer,
   programDetailsReducer
 } from './reducers/programReducers'
+import { cartReducer } from './reducers/cartReducers'
 import {
   userLoginReducer,
   userRegisterReducer,
@@ -15,19 +16,20 @@ import {
   coachLoginReducer,
   coachDetailsReducer,
   coachUpdateProfileReducer,
-  coachListReducer
-  // listCoachDetailsReducer
+  coachListReducer,
+  listCoachDetailsReducer
 } from './reducers/coachReducers'
 
 const reducer = combineReducers({
   programList: programListReducer,
   programDetails: programDetailsReducer,
+  cart: cartReducer,
   userLogin: userLoginReducer,
   coachLogin: coachLoginReducer,
   coachDetails: coachDetailsReducer,
   coachUpdateProfile: coachUpdateProfileReducer,
   coachList: coachListReducer,
-  // listCoachDetails: listCoachDetailsReducer,
+  listCoachDetails: listCoachDetailsReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer
@@ -41,9 +43,14 @@ const coachInfoFromStorage = localStorage.getItem('coachInfo')
   ? JSON.parse(localStorage.getItem('coachInfo'))
   : null
 
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : []
+
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
-  coachLogin: { coachInfo: coachInfoFromStorage }
+  coachLogin: { coachInfo: coachInfoFromStorage },
+  cart: { cartItems: cartItemsFromStorage }
 }
 
 const middleware = [thunk]

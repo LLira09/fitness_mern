@@ -1,16 +1,5 @@
 const programs = [
   {
-    name: 'HITT',
-    image: '/images/class2.jpg',
-    time: '9:00am',
-    days: 'M-F',
-    description:
-      'HIIT workouts generally combine short bursts of intense exercise with periods of rest or lower-intensity exercise.',
-    availableSpots: 30,
-    rating: 4.5,
-    numReviews: 5
-  },
-  {
     name: 'Jiu-Jitsu',
     image: '/images/class1.jpg',
     time: '5:00pm',
@@ -39,6 +28,17 @@ const programs = [
     days: 'Everyday',
     description:
       'Tap into the benefits of cardiovascular exercise, with none of the boredom. Get off the treadmill and into the groove in Kickass Kick, Extreme Step and more.',
+    availableSpots: 30,
+    rating: 4.5,
+    numReviews: 5
+  },
+  {
+    name: 'HITT',
+    image: '/images/class2.jpg',
+    time: '9:00am',
+    days: 'M-F',
+    description:
+      'HIIT workouts generally combine short bursts of intense exercise with periods of rest or lower-intensity exercise.',
     availableSpots: 30,
     rating: 4.5,
     numReviews: 5

@@ -9,7 +9,9 @@ const coaches = [
     bio:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ratione fugit assumenda fugiat facere illo impedit voluptates ad unde tempora?',
     price: '299',
-    isAdmin: true
+    isAdmin: true,
+    rating: 4.5,
+    numReviews: 8
   },
   {
     name: 'Austin',
@@ -18,7 +20,9 @@ const coaches = [
     image: '/images/trainer4.jpg',
     bio:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ratione fugit assumenda fugiat facere illo impedit voluptates ad unde tempora?',
-    price: '199'
+    price: '199',
+    rating: 4.2,
+    numReviews: 6
   },
   {
     name: 'Jane',
@@ -27,7 +31,9 @@ const coaches = [
     image: '/images/trainer2.jpg',
     bio:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ratione fugit assumenda fugiat facere illo impedit voluptates ad unde tempora?',
-    price: '199'
+    price: '199',
+    rating: 4.8,
+    numReviews: 12
   }
 ]
 

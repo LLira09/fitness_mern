@@ -12,10 +12,10 @@ import {
   COACH_UPDATE_PROFILE_FAIL,
   COACH_LIST_REQUEST,
   COACH_LIST_SUCCESS,
-  COACH_LIST_FAIL
-  // LIST_COACH_DETAILS_REQUEST,
-  // LIST_COACH_DETAILS_SUCCESS,
-  // LIST_COACH_DETAILS_FAIL
+  COACH_LIST_FAIL,
+  LIST_COACH_DETAILS_REQUEST,
+  LIST_COACH_DETAILS_SUCCESS,
+  LIST_COACH_DETAILS_FAIL
 } from '../constants/coachConstants'
 
 export const login = (email, password) => async dispatch => {
@@ -140,20 +140,20 @@ export const listCoaches = () => async dispatch => {
   }
 }
 
-// export const listCoachDetails = id => async dispatch => {
-//   try {
-//     dispatch({ type: LIST_COACH_DETAILS_REQUEST })
+export const listCoachDetails = id => async dispatch => {
+  try {
+    dispatch({ type: LIST_COACH_DETAILS_REQUEST })
 
-//     const { data } = await axios.get(`/api/coaches/${id}`)
+    const { data } = await axios.get(`/api/coaches/coach/${id}`)
 
-//     dispatch({ type: LIST_COACH_DETAILS_SUCCESS, payload: data })
-//   } catch (error) {
-//     dispatch({
-//       type: LIST_COACH_DETAILS_FAIL,
-//       payload:
-//         error.response && error.response.data.message
-//           ? error.response.data.message
-//           : error.message
-//     })
-//   }
-// }
+    dispatch({ type: LIST_COACH_DETAILS_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: LIST_COACH_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    })
+  }
+}

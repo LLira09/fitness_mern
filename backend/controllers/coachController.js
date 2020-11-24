@@ -125,25 +125,25 @@ const getCoaches = asyncHandler(async (req, res) => {
   res.json(coaches)
 })
 
-// // @desc    Fetch single coach
-// // @route   GET /api/coaches/:id
-// // @access  Public
-// const getCoachById = asyncHandler(async (req, res) => {
-//   const coach = await Coach.findById(req.params.id).select('-password')
+// @desc    Fetch single coach
+// @route   GET /api/coaches/:id
+// @access  Public
+const getCoachById = asyncHandler(async (req, res) => {
+  const coach = await Coach.findById(req.params.id).select('-password')
 
-//   if (coach) {
-//     res.json(coach)
-//   } else {
-//     res.status(404)
-//     throw new Error('Coach not found')
-//   }
-// })
+  if (coach) {
+    res.json(coach)
+  } else {
+    res.status(404)
+    throw new Error('Coach not found')
+  }
+})
 
 export {
   authCoach,
   getCoachProfile,
   registerCoach,
   updateCoachProfile,
-  getCoaches
-  // getCoachById
+  getCoaches,
+  getCoachById
 }
