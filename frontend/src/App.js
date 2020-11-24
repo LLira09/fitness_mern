@@ -12,6 +12,7 @@ import ProfileScreen from './screens/ProfileScreen'
 import CoachProfileScreen from './screens/CoachProfileScreen'
 import CoachScreen from './screens/CoachScreen'
 import CoachesScreen from './screens/CoachesScreen'
+import CartScreen from './screens/CartScreen'
 
 const App = () => {
   return (
@@ -27,7 +28,7 @@ const App = () => {
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/coaches/profile' component={CoachProfileScreen} />
           <Route path='/programs/:id' component={ProgramScreen} />
-
+          <Route path='/cart/:id?' component={CartScreen} />
           <Route path='/register' component={RegisterScreen} />
 
           <Route path='/' component={HomeScreen} exact />
