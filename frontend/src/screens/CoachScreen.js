@@ -11,8 +11,8 @@ import { listCoachDetails } from '../actions/coachActions'
 const CoachScreen = ({ match }) => {
   const dispatch = useDispatch()
 
-  const coachDetails = useSelector(state => state.listCoachDetails)
-  const { loading, error, coach } = coachDetails
+  const lCoachDetails = useSelector(state => state.listCoachDetails)
+  const { loading, error, coach } = lCoachDetails
 
   useEffect(() => {
     dispatch(listCoachDetails(match.params.id))

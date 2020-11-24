@@ -10,7 +10,7 @@ import CoachLoginScreen from './screens/CoachLoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import CoachProfileScreen from './screens/CoachProfileScreen'
-// import CoachScreen from './screens/CoachScreen'
+import CoachScreen from './screens/CoachScreen'
 import CoachesScreen from './screens/CoachesScreen'
 
 const App = () => {
@@ -21,13 +21,15 @@ const App = () => {
         <Container>
           <Route path='/login' component={LoginScreen} />
           <Route path='/coaches' component={CoachesScreen} exact />
-
-          {/* <Route path='/coaches/:id' component={CoachScreen} /> */}
+          <Route path='/coaches/coach/:id' component={CoachScreen} exact />
           <Route path='/coaches/login' component={CoachLoginScreen} />
-          <Route path='/register' component={RegisterScreen} />
+
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/coaches/profile' component={CoachProfileScreen} />
           <Route path='/programs/:id' component={ProgramScreen} />
+
+          <Route path='/register' component={RegisterScreen} />
+
           <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>
