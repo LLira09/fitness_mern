@@ -19,7 +19,12 @@ import {
   coachListReducer,
   listCoachDetailsReducer
 } from './reducers/coachReducers'
-import { orderCreateReducer } from './reducers/orderReducers'
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+  orderListMyReducer
+} from './reducers/orderReducers'
 
 const reducer = combineReducers({
   programList: programListReducer,
@@ -34,7 +39,10 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
-  orderCreate: orderCreateReducer
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderList: orderListMyReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
