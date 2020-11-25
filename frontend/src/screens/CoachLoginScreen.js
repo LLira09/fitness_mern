@@ -28,7 +28,7 @@ const CoachLoginScreen = ({ location, history }) => {
   }
   return (
     <FormContainer>
-      <h1>Coach Login</h1>
+      <h1>Coach Back Coach</h1>
       {error && <Message>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
