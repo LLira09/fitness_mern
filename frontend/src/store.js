@@ -19,6 +19,7 @@ import {
   coachListReducer,
   listCoachDetailsReducer
 } from './reducers/coachReducers'
+import { orderCreateReducer } from './reducers/orderReducers'
 
 const reducer = combineReducers({
   programList: programListReducer,
@@ -32,7 +33,8 @@ const reducer = combineReducers({
   listCoachDetails: listCoachDetailsReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
-  userUpdateProfile: userUpdateProfileReducer
+  userUpdateProfile: userUpdateProfileReducer,
+  orderCreate: orderCreateReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

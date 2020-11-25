@@ -13,7 +13,6 @@ export const listPrograms = () => async dispatch => {
     dispatch({ type: PROGRAM_LIST_REQUEST })
 
     const { data } = await axios.get('/api/programs')
-
     dispatch({ type: PROGRAM_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({

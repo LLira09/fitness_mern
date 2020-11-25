@@ -14,7 +14,7 @@ const orderSchema = mongoose.Schema(
           required: true,
           ref: 'Coach'
         },
-        duration: { type: String, required: true },
+        qty: { type: Number, required: true },
         price: { type: Number, required: true }
       }
     ],
