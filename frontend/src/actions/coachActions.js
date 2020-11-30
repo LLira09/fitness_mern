@@ -18,7 +18,8 @@ import {
   COACH_CREATE_REVIEW_FAIL,
   LIST_COACH_DETAILS_REQUEST,
   LIST_COACH_DETAILS_SUCCESS,
-  LIST_COACH_DETAILS_FAIL
+  LIST_COACH_DETAILS_FAIL,
+  COACH_DETAILS_RESET
 } from '../constants/coachConstants'
 import { USER_LIST_RESET } from '../constants/userConstants'
 
@@ -59,6 +60,7 @@ export const coachLogout = () => dispatch => {
   localStorage.removeItem('coachInfo')
   dispatch({ type: COACH_LOGOUT })
   dispatch({ type: USER_LIST_RESET })
+  dispatch({ type: COACH_DETAILS_RESET })
 }
 
 export const getCoachDetails = id => async (dispatch, getState) => {
