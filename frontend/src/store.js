@@ -18,7 +18,8 @@ import {
   coachDetailsReducer,
   coachUpdateProfileReducer,
   coachListReducer,
-  listCoachDetailsReducer
+  listCoachDetailsReducer,
+  coachReviewCreateReducer
 } from './reducers/coachReducers'
 import {
   orderCreateReducer,
@@ -36,6 +37,7 @@ const reducer = combineReducers({
   coachDetails: coachDetailsReducer,
   coachUpdateProfile: coachUpdateProfileReducer,
   coachList: coachListReducer,
+  coachReviewCreate: coachReviewCreateReducer,
   userList: userListReducer,
   listCoachDetails: listCoachDetailsReducer,
   userRegister: userRegisterReducer,

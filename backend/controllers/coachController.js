@@ -139,11 +139,48 @@ const getCoachById = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Create new Review
+// @route   POST /api/coaches/:id/reviews
+// @access  Private
+const createCoachReview = asyncHandler(async (req, res) => {
+  const { rating, comment } = req.body
+  const coach = await Coach.findById(req.params.id)
+
+  if (coach) {
+    const reviewed = coach.reviews.find(
+      r => r.user.toString() === req.user._id.toString()
+    )
+    if (reviewed) {
+      res.status(400)
+      throw new Error('You already left a review')
+    }
+
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id
+    }
+
+    coach.reviews.push(review)
+    coach.numReviews = coach.reviews.length
+    coach.rating =
+      coach.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      coach.reviews.length
+    await coach.save()
+    res.status(201).json({ message: 'Success' })
+  } else {
+    res.status(404)
+    throw new Error('Coach not found')
+  }
+})
+
 export {
   authCoach,
   getCoachProfile,
   registerCoach,
   updateCoachProfile,
   getCoaches,
-  getCoachById
+  getCoachById,
+  createCoachReview
 }

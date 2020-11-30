@@ -13,6 +13,9 @@ import {
   COACH_LIST_REQUEST,
   COACH_LIST_SUCCESS,
   COACH_LIST_FAIL,
+  COACH_CREATE_REVIEW_REQUEST,
+  COACH_CREATE_REVIEW_SUCCESS,
+  COACH_CREATE_REVIEW_FAIL,
   LIST_COACH_DETAILS_REQUEST,
   LIST_COACH_DETAILS_SUCCESS,
   LIST_COACH_DETAILS_FAIL
@@ -152,6 +155,38 @@ export const listCoachDetails = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: LIST_COACH_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    })
+  }
+}
+
+export const createCoachReview = (coachId, review) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({ type: COACH_CREATE_REVIEW_REQUEST })
+
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    await axios.post(`/api/coaches/${coachId}/reviews`, review, config)
+
+    dispatch({ type: COACH_CREATE_REVIEW_SUCCESS })
+  } catch (error) {
+    dispatch({
+      type: COACH_CREATE_REVIEW_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
