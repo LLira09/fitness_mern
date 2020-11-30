@@ -18,7 +18,8 @@ import {
   COACH_CREATE_REVIEW_RESET,
   LIST_COACH_DETAILS_REQUEST,
   LIST_COACH_DETAILS_SUCCESS,
-  LIST_COACH_DETAILS_FAIL
+  LIST_COACH_DETAILS_FAIL,
+  COACH_DETAILS_RESET
 } from '../constants/coachConstants'
 
 export const coachLoginReducer = (state = {}, action) => {
@@ -44,6 +45,8 @@ export const coachDetailsReducer = (state = { coach: {} }, action) => {
       return { loading: false, coach: action.payload }
     case COACH_DETAILS_FAIL:
       return { loading: false, error: action.payload }
+    case COACH_DETAILS_RESET:
+      return { coach: {} }
     default:
       return state
   }
