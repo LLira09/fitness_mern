@@ -60,7 +60,7 @@ const protectCoach = asyncHandler(async (req, res, next) => {
 })
 
 const adminCoach = (req, res, next) => {
-  if (req.coach) {
+  if (req.coach && req.coach.isAdmin) {
     next()
   } else {
     res.status(401)
