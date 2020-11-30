@@ -170,7 +170,7 @@ const CoachProfileScreen = ({ location, history }) => {
                     <td>
                       <LinkContainer to={`/coach/createworkout/${order._id}`}>
                         <Button variant='light' style={{ border: 'none' }}>
-                          <u>{order.user}</u>
+                          <u>{order.name}</u>
                         </Button>
                       </LinkContainer>
                     </td>

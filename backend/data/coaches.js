@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs'
 
 const coaches = [
   {
-    name: 'admin',
+    name: 'Steve',
     email: 'admin@example.com',
     password: bcrypt.hashSync('123456', 10),
     image: '/images/trainer1.jpg',
