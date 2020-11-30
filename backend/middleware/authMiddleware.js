@@ -58,4 +58,13 @@ const protectCoach = asyncHandler(async (req, res, next) => {
     throw new Error('Not authorized, no token')
   }
 })
-export { protect, protectCoach }
+
+const adminCoach = (req, res, next) => {
+  if (req.coach) {
+    next()
+  } else {
+    res.status(401)
+    throw new Error('Not authorized')
+  }
+}
+export { protect, protectCoach, adminCoach }
