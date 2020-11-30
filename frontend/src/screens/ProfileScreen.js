@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
@@ -136,7 +137,13 @@ const ProfileScreen = ({ location, history }) => {
               <tbody>
                 {orders.map(order => (
                   <tr key={order._id}>
-                    <td></td>
+                    <td>
+                      <LinkContainer to={`/order/${order._id}`}>
+                        <Button variant='light' style={{ border: 'none' }}>
+                          <u>{order._id}</u>
+                        </Button>
+                      </LinkContainer>
+                    </td>
                     <td>{order.orderItems.map(item => item.qty)}</td>
                     <td>{order.createdAt.substring(0, 10)}</td>
                     <td>${order.totalPrice}</td>

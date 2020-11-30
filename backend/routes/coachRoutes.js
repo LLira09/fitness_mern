@@ -7,6 +7,7 @@ import {
   updateCoachProfile,
   getCoaches,
   getCoachById
+  // getUsers
 } from '../controllers/coachController.js'
 import { protectCoach } from '../middleware/authMiddleware.js'
 
@@ -20,5 +21,6 @@ router
   .put(protectCoach, updateCoachProfile)
 
 router.route('/coach/:id').get(getCoachById)
+// router.route('/').get(protectCoach, getUsers)
 
 export default router
