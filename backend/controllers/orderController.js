@@ -80,4 +80,20 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.json(orders)
 })
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders }
+// @desc    Get Logged in Coach order
+// @route   GET /api/orders/mycoachorders
+// @access  Private
+const getMyCoachOrders = asyncHandler(async (req, res) => {
+  const coach = req.coach._id
+  const orders = await Order.find({ 'orderItems.coach': coach })
+
+  res.json(orders)
+})
+
+export {
+  addOrderItems,
+  getOrderById,
+  updateOrderToPaid,
+  getMyOrders,
+  getMyCoachOrders
+}

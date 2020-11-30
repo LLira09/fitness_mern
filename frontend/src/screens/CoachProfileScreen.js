@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getCoachDetails, updateCoachProfile } from '../actions/coachActions'
+import { listMyCoachOrders } from '../actions/orderActions'
 
 const CoachProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -25,12 +27,16 @@ const CoachProfileScreen = ({ location, history }) => {
   const coachUpdateProfile = useSelector(state => state.coachUpdateProfile)
   const { success } = coachUpdateProfile
 
+  const orderListCoach = useSelector(state => state.orderListCoach)
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListCoach
+
   useEffect(() => {
     if (!coachInfo) {
       history.push('/coaches/login')
     } else {
       if (!coach.name) {
         dispatch(getCoachDetails('profile'))
+        dispatch(listMyCoachOrders())
       } else {
         setName(coach.name)
         setEmail(coach.email)
@@ -143,6 +149,40 @@ const CoachProfileScreen = ({ location, history }) => {
         </Col>
         <Col md={9}>
           <h4>My Clients</h4>
+          {loadingOrders ? (
+            <Loader />
+          ) : errorOrders ? (
+            <Message>{errorOrders}</Message>
+          ) : (
+            <Table striped bordered hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <td>NAME</td>
+                  <td>MONTHS</td>
+                  <td>DATE</td>
+                  <td>TOTAL</td>
+                  <td>PAID</td>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map(order => (
+                  <tr key={order._id}>
+                    <td>
+                      <LinkContainer to={`/coach/createworkout/${order._id}`}>
+                        <Button variant='light' style={{ border: 'none' }}>
+                          <u>{order.user}</u>
+                        </Button>
+                      </LinkContainer>
+                    </td>
+                    <td>{order.orderItems.map(item => item.qty)}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>${order.totalPrice}</td>
+                    <td>{order.isPaid ? 'Yes' : 'No'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
         </Col>
       </Row>
     </>
