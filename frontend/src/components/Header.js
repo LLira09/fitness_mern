@@ -60,6 +60,18 @@ const Header = () => {
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
+              ) : coachInfo && coachInfo.isAdmin ? (
+                <NavDropdown title={coachInfo.name} id='username'>
+                  <LinkContainer to='/coaches/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={coachLogoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
               ) : coachInfo ? (
                 <NavDropdown title={coachInfo.name} id='username'>
                   <LinkContainer to='/coaches/profile'>
@@ -77,10 +89,6 @@ const Header = () => {
                 </LinkContainer>
               )}
             </Nav>
-            {/* <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-success">Search</Button>
-    </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
