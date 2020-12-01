@@ -49,4 +49,12 @@ const createUserWorkout = asyncHandler(async (req, res) => {
   }
 })
 
-export { createUserWorkout }
+// @desc    Get Logged in user workouts
+// @route   GET /api/workouts
+// @access  Private
+const getMyWorkouts = asyncHandler(async (req, res) => {
+  const workouts = await Workout.find({ user: req.user._id })
+  res.json(workouts)
+})
+
+export { createUserWorkout, getMyWorkouts }

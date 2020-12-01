@@ -110,24 +110,4 @@ const getUsers = asyncHandler(async (req, res) => {
   res.json(users)
 })
 
-// // @desc    Create new Workout
-// // @route   POST /api/users/:id/newworkout
-// // @access  Private
-// const createUserWorkout = asyncHandler(async (req, res) => {
-//   const {
-//     mondayWorkout,
-//     tuesdayWorkout,
-//     wednesdayWorkout,
-//     thursdayWorkout,
-//     fridayWorkout,
-//     saturdayWorkout,
-//     sundayWorkout,
-//     notes,
-//     cardio,
-//     cardioTime
-//   } = req.body
-
-//   const user = await User.findById(req.user.id)
-// })
-
 export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers }
