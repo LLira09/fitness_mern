@@ -9,6 +9,7 @@ import programRoutes from './routes/programRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import coachRoutes from './routes/coachRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
+import workoutRoutes from './routes/workoutRoutes.js'
 
 dotenv.config()
 
@@ -29,6 +30,7 @@ app.use('/api/programs', programRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/coaches', coachRoutes)
 app.use('/api/orders', orderRoutes)
+app.use('/api/workouts', workoutRoutes)
 
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)

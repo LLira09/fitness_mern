@@ -168,7 +168,7 @@ const CoachProfileScreen = ({ location, history }) => {
                 {orders.map(order => (
                   <tr key={order._id}>
                     <td>
-                      <LinkContainer to={`/coach/createworkout/${order._id}`}>
+                      <LinkContainer to={`/coach/createworkout/${order.user}`}>
                         <Button variant='light' style={{ border: 'none' }}>
                           <u>{order.name}</u>
                         </Button>

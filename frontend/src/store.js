@@ -28,6 +28,7 @@ import {
   orderListMyReducer,
   orderListCoachReducer
 } from './reducers/orderReducers'
+import { workoutCreateReducer } from './reducers/workoutReducers'
 
 const reducer = combineReducers({
   programList: programListReducer,
@@ -48,7 +49,8 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
-  orderListCoach: orderListCoachReducer
+  orderListCoach: orderListCoachReducer,
+  workoutCreate: workoutCreateReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
