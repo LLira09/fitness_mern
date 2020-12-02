@@ -12,10 +12,10 @@ const Program = ({ program }) => {
       <Card.Body>
         <Card.Title as='div'>{program.name}</Card.Title>
         <Card.Text as='div'>
-          <Rating
+          {/* <Rating
             value={program.rating}
             text={`${program.numReviews} reviews`}
-          />
+          /> */}
         </Card.Text>
         <Link to={`/programs/${program._id}`}>
           <Button className='mt-2'>More Info</Button>

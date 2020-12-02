@@ -36,12 +36,12 @@ const ProgramScreen = ({ match }) => {
               <ListGroup.Item>
                 <h3>{program.name}</h3>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 <Rating
                   value={program.rating}
                   text={`${program.numReviews} reviews`}
                 />
-              </ListGroup.Item>
+              </ListGroup.Item> */}
               <ListGroup.Item>
                 Description: {program.description}
               </ListGroup.Item>
