@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { listMyOrders } from '../actions/orderActions'
+import { listMyWorkouts } from '../actions/workoutActions'
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -28,6 +29,13 @@ const ProfileScreen = ({ location, history }) => {
   const orderListMy = useSelector(state => state.orderListMy)
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
+  const workoutList = useSelector(state => state.workoutList)
+  const {
+    loading: loadingWorkouts,
+    error: errorWorkouts,
+    workouts
+  } = workoutList
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
@@ -35,6 +43,7 @@ const ProfileScreen = ({ location, history }) => {
       if (!user.name) {
         dispatch(getUserDetails('profile'))
         dispatch(listMyOrders())
+        dispatch(listMyWorkouts())
       } else {
         setName(user.name)
         setEmail(user.email)
