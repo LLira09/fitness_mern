@@ -19,7 +19,13 @@ import {
   LIST_COACH_DETAILS_REQUEST,
   LIST_COACH_DETAILS_SUCCESS,
   LIST_COACH_DETAILS_FAIL,
-  COACH_DETAILS_RESET
+  COACH_DETAILS_RESET,
+  COACH_REGISTER_REQUEST,
+  COACH_REGISTER_SUCCESS,
+  COACH_REGISTER_FAIL,
+  COACH_DELETE_REQUEST,
+  COACH_DELETE_SUCCESS,
+  COACH_DELETE_FAIL
 } from '../constants/coachConstants'
 import { USER_LIST_RESET } from '../constants/userConstants'
 
@@ -189,6 +195,80 @@ export const createCoachReview = (coachId, review) => async (
   } catch (error) {
     dispatch({
       type: COACH_CREATE_REVIEW_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    })
+  }
+}
+
+export const registerCoach = (
+  name,
+  email,
+  image,
+  bio,
+  price,
+  password
+) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: COACH_REGISTER_REQUEST
+    })
+    const {
+      coachLogin: { coachInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${coachInfo.token}`
+      }
+    }
+
+    await axios.post(
+      '/api/coaches',
+      { name, email, image, bio, price, password },
+      config
+    )
+
+    dispatch({
+      type: COACH_REGISTER_SUCCESS
+    })
+  } catch (error) {
+    dispatch({
+      type: COACH_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    })
+  }
+}
+
+export const deleteCoach = id => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: COACH_DELETE_REQUEST
+    })
+
+    const {
+      coachLogin: { coachInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${coachInfo.token}`
+      }
+    }
+    const { data } = await axios.delete(`/api/coaches/${id}`, config)
+
+    dispatch({
+      type: COACH_DELETE_SUCCESS
+    })
+  } catch (error) {
+    dispatch({
+      type: COACH_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

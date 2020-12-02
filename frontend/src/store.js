@@ -16,11 +16,13 @@ import {
 } from './reducers/userReducers'
 import {
   coachLoginReducer,
+  coachRegisterReducer,
   coachDetailsReducer,
   coachUpdateProfileReducer,
   coachListReducer,
   listCoachDetailsReducer,
-  coachReviewCreateReducer
+  coachReviewCreateReducer,
+  coachDeleteReducer
 } from './reducers/coachReducers'
 import {
   orderCreateReducer,
@@ -40,10 +42,12 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   coachLogin: coachLoginReducer,
+  coachRegister: coachRegisterReducer,
   coachDetails: coachDetailsReducer,
   coachUpdateProfile: coachUpdateProfileReducer,
   coachList: coachListReducer,
   coachReviewCreate: coachReviewCreateReducer,
+  coachDelete: coachDeleteReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,
   listCoachDetails: listCoachDetailsReducer,

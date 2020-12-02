@@ -55,8 +55,8 @@ const registerCoach = asyncHandler(async (req, res) => {
       image: coach.image,
       bio: coach.bio,
       price: coach.price,
-      isAdmin: coach.isAdmin,
-      token: generateToken(coach._id)
+      isAdmin: coach.isAdmin
+      // token: generateToken(coach._id)
     })
   } else {
     res.status(400)
@@ -175,6 +175,20 @@ const createCoachReview = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Delete coach
+// @route   DELETE /api/coaches/:id
+// @access  Private/Admin
+const deleteCoach = asyncHandler(async (req, res) => {
+  const coach = await Coach.findById(req.params.id)
+  if (coach) {
+    await coach.remove()
+    res.json({ message: 'Coach deleted' })
+  } else {
+    res.status(404)
+    throw new Error('Coach not found')
+  }
+})
+
 export {
   authCoach,
   getCoachProfile,
@@ -182,5 +196,6 @@ export {
   updateCoachProfile,
   getCoaches,
   getCoachById,
-  createCoachReview
+  createCoachReview,
+  deleteCoach
 }

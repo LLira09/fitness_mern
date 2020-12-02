@@ -7,11 +7,16 @@ import {
   updateCoachProfile,
   getCoaches,
   getCoachById,
-  createCoachReview
+  createCoachReview,
+  deleteCoach
 } from '../controllers/coachController.js'
-import { protectCoach, protect } from '../middleware/authMiddleware.js'
+import {
+  protectCoach,
+  protect,
+  adminCoach
+} from '../middleware/authMiddleware.js'
 
-router.route('/').post(registerCoach)
+router.route('/').post(protectCoach, adminCoach, registerCoach)
 router.route('/').get(getCoaches)
 router.route('/:id/reviews').post(protect, createCoachReview)
 
@@ -22,6 +27,7 @@ router
   .put(protectCoach, updateCoachProfile)
 
 router.route('/coach/:id').get(getCoachById)
+router.route('/:id').delete(protectCoach, adminCoach, deleteCoach)
 // router.route('/').get(protectCoach, getUsers)
 
 export default router

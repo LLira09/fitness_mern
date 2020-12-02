@@ -19,7 +19,13 @@ import {
   LIST_COACH_DETAILS_REQUEST,
   LIST_COACH_DETAILS_SUCCESS,
   LIST_COACH_DETAILS_FAIL,
-  COACH_DETAILS_RESET
+  COACH_DETAILS_RESET,
+  COACH_REGISTER_REQUEST,
+  COACH_REGISTER_SUCCESS,
+  COACH_REGISTER_FAIL,
+  COACH_DELETE_REQUEST,
+  COACH_DELETE_SUCCESS,
+  COACH_DELETE_FAIL
 } from '../constants/coachConstants'
 
 export const coachLoginReducer = (state = {}, action) => {
@@ -32,6 +38,20 @@ export const coachLoginReducer = (state = {}, action) => {
       return { loading: false, error: action.payload }
     case COACH_LOGOUT:
       return {}
+    default:
+      return state
+  }
+}
+
+export const coachRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case COACH_REGISTER_REQUEST:
+      return { loading: true }
+    case COACH_REGISTER_SUCCESS:
+      return { loading: false, success: true }
+    case COACH_REGISTER_FAIL:
+      return { loading: false, error: action.payload }
+
     default:
       return state
   }
@@ -105,6 +125,19 @@ export const coachReviewCreateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload }
     case COACH_CREATE_REVIEW_RESET:
       return {}
+    default:
+      return state
+  }
+}
+
+export const coachDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case COACH_DELETE_REQUEST:
+      return { loading: true }
+    case COACH_DELETE_SUCCESS:
+      return { loading: false, success: true }
+    case COACH_DELETE_FAIL:
+      return { loading: false, error: action.payload }
     default:
       return state
   }
