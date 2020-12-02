@@ -16,8 +16,7 @@ const MainCarousel = () => {
             alt='First slide'
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Multiple Classes Available Daily</h3>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -42,10 +41,7 @@ const MainCarousel = () => {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <h3>Strength Training</h3>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
