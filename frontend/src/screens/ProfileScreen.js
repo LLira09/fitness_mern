@@ -70,7 +70,7 @@ const ProfileScreen = ({ location, history }) => {
         <h2>Welcome Back {user.name}</h2>
       </Row>
 
-      <Row>
+      <Row className='py-3'>
         <Col md={12}>
           {loadingWorkouts ? (
             <Loader />
@@ -114,7 +114,7 @@ const ProfileScreen = ({ location, history }) => {
           )}
         </Col>
       </Row>
-      <Row>
+      <Row className='py-3'>
         <Col md={3}>
           <h4>Update Profile</h4>
           {message && <Message>{message}</Message>}

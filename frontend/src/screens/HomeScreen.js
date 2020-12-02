@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
+import MainCarousel from '../components/MainCarousel'
 import Program from '../components/Program'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -18,6 +19,9 @@ const HomeScreen = () => {
 
   return (
     <>
+      <Row>
+        <MainCarousel />
+      </Row>
       <h1>Programs</h1>
       {loading ? (
         <Loader />
