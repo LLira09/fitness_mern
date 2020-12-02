@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
@@ -67,6 +68,51 @@ const ProfileScreen = ({ location, history }) => {
     <>
       <Row>
         <h2>Welcome Back {user.name}</h2>
+      </Row>
+
+      <Row>
+        <Col md={12}>
+          {loadingWorkouts ? (
+            <Loader />
+          ) : errorOrders ? (
+            <Message>{errorOrders}</Message>
+          ) : (
+            <Table striped bordered hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <td>WEEK</td>
+                  <td>MONDAY</td>
+                  <td>TUESDAY</td>
+                  <td>WEDNESDAY</td>
+                  <td>THURSDAY</td>
+                  <td>FRIDAY</td>
+                  <td>SATURDAY</td>
+                  <td>SUNDAY</td>
+                  <td>CARDIO</td>
+                  <td>NOTES</td>
+                  <td>COACH</td>
+                </tr>
+              </thead>
+              <tbody>
+                {workouts.map(workout => (
+                  <tr key={workout._id}>
+                    <td>{workout.week}</td>
+                    <td>{workout.mondayWorkout}</td>
+                    <td>{workout.tuesdayWorkout}</td>
+                    <td>{workout.wednesdayWorkout}</td>
+                    <td>{workout.thursdayWorkout}</td>
+                    <td>{workout.fridayWorkout}</td>
+                    <td>{workout.saturdayWorkout}</td>
+                    <td>{workout.sundayWorkout}</td>
+                    <td>{workout.cardioTime}</td>
+                    <td>{workout.notes}</td>
+                    <td>{workout.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </Col>
       </Row>
       <Row>
         <Col md={3}>

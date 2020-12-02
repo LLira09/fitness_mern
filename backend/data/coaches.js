@@ -7,7 +7,7 @@ const coaches = [
     password: bcrypt.hashSync('123456', 10),
     image: '/images/trainer1.jpg',
     bio:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ratione fugit assumenda fugiat facere illo impedit voluptates ad unde tempora?',
+      'Muay Thai Kickboxing Champion, BJJ Brown Belt and NASM certified, All packages include working out with me twice a week',
     price: '299',
     isAdmin: true,
     rating: 4.5,
@@ -19,7 +19,7 @@ const coaches = [
     password: bcrypt.hashSync('123456', 10),
     image: '/images/trainer4.jpg',
     bio:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ratione fugit assumenda fugiat facere illo impedit voluptates ad unde tempora?',
+      'Strength Coach, NASM certified, All packages include working out with me twice a week',
     price: '199',
     rating: 4.2,
     numReviews: 6
@@ -30,7 +30,7 @@ const coaches = [
     password: bcrypt.hashSync('123456', 10),
     image: '/images/trainer2.jpg',
     bio:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ratione fugit assumenda fugiat facere illo impedit voluptates ad unde tempora?',
+      'Yoga, Weight-Loss, NASM certified, All packages include working out with me twice a week',
     price: '199',
     rating: 4.8,
     numReviews: 12
