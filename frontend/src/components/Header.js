@@ -66,7 +66,7 @@ const Header = () => {
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
+                    <NavDropdown.Item>Admin</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={coachLogoutHandler}>
                     Logout

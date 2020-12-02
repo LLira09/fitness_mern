@@ -11,7 +11,8 @@ import {
   userRegisterReducer,
   userDetailsReducer,
   userUpdateProfileReducer,
-  userListReducer
+  userListReducer,
+  userDeleteReducer
 } from './reducers/userReducers'
 import {
   coachLoginReducer,
@@ -44,6 +45,7 @@ const reducer = combineReducers({
   coachList: coachListReducer,
   coachReviewCreate: coachReviewCreateReducer,
   userList: userListReducer,
+  userDelete: userDeleteReducer,
   listCoachDetails: listCoachDetailsReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
