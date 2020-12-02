@@ -34,7 +34,7 @@ const programs = [
   },
   {
     name: 'HITT',
-    image: '/images/class2.jpg',
+    image: '/images/cycle.jpg',
     time: '9:00am',
     days: 'M-F',
     description:

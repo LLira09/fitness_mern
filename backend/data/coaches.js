@@ -14,10 +14,21 @@ const coaches = [
     numReviews: 8
   },
   {
+    name: 'Jessica',
+    email: 'jessica@example.com',
+    password: bcrypt.hashSync('123456', 10),
+    image: '/images/jess.jpg',
+    bio:
+      'Strength Coach, NASM certified, All packages include working out with me twice a week',
+    price: '199',
+    rating: 4.2,
+    numReviews: 6
+  },
+  {
     name: 'Austin',
     email: 'austin@example.com',
     password: bcrypt.hashSync('123456', 10),
-    image: '/images/trainer4.jpg',
+    image: '/images/austin.jpg',
     bio:
       'Strength Coach, NASM certified, All packages include working out with me twice a week',
     price: '199',
