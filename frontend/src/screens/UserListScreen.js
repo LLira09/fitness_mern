@@ -75,6 +75,13 @@ const UserListScreen = ({ history }) => {
           password
         )
       )
+      setName('')
+      setEmail('')
+      setImage('')
+      setPrice('')
+      setBio('')
+      setPassword('')
+      setConfirmPassword('')
     }
   }
 
